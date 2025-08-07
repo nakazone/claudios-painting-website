@@ -18,7 +18,298 @@ document.addEventListener('DOMContentLoaded', function() {
             navCta.classList.remove('active');
         });
     });
+
+    // Hero Quote Form handling
+    initHeroQuoteForm();
+    
+    // Portfolio functionality
+    initPortfolio();
 });
+
+// Portfolio functionality
+function initPortfolio() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    // Separate image arrays for each project
+    const projectImages = {
+        project1: [
+            'assets/portfolio/project1/cover.jpeg',
+            'assets/portfolio/project1/1.jpeg',
+            'assets/portfolio/project1/2.jpeg',
+            'assets/portfolio/project1/3.jpeg',
+            'assets/portfolio/project1/4.jpeg',
+            'assets/portfolio/project1/5.jpeg',
+            'assets/portfolio/project1/6.jpeg',
+            'assets/portfolio/project1/7.jpeg',
+            'assets/portfolio/project1/8.jpeg'
+        ],
+        project2: [
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.31.jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.30.jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.30 (1).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.30 (2).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.31 (2).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.31 (3).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.33.55.jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.33.55 (1).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.33.55 (2).jpeg',
+            'assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.33.55 (3).jpeg'
+        ],
+        project3: [
+            'assets/portfolio/project4/WhatsApp Image 2025-08-04 at 12.30.37.jpeg',
+            'assets/portfolio/project4/WhatsApp Image 2025-08-04 at 12.31.31 (1).jpeg'
+        ],
+        project4: [
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.36.jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (3).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35.jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (1).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (2).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (4).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (5).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (6).jpeg',
+            'assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.35 (7).jpeg',
+            
+        ],
+        project5: [
+            'assets/portfolio/project6/WhatsApp Image 2025-08-04 at 17.38.06.jpeg',
+            'assets/portfolio/project6/WhatsApp Image 2025-08-04 at 17.38.52.jpeg'
+        ]
+    };
+    
+    // Handle "View Project" link clicks
+    const viewProjectLinks = document.querySelectorAll('.view-project-link');
+    
+    viewProjectLinks.forEach((link, index) => {
+        link.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            // Determine which project this link belongs to
+            const portfolioItem = this.closest('.portfolio-item');
+            const projectIndex = Array.from(portfolioItems).indexOf(portfolioItem);
+            const projectKey = `project${projectIndex + 1}`;
+            
+            // Get the images for this specific project
+            const projectImagesArray = projectImages[projectKey];
+            
+            if (projectImagesArray && projectImagesArray.length > 0) {
+                // Show lightbox with only this project's images, starting from the first image
+                showLightbox(projectImagesArray, 0);
+            }
+        });
+    });
+}
+
+// Portfolio Modal
+function showPortfolioModal(imageSrc, title, description) {
+    // Remove existing modal
+    const existingModal = document.querySelector('.portfolio-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'portfolio-modal';
+    modal.innerHTML = `
+        <div class="portfolio-modal-overlay">
+            <div class="portfolio-modal-content">
+                <button class="portfolio-modal-close">&times;</button>
+                <div class="portfolio-modal-image">
+                    <img src="${imageSrc}" alt="${title}">
+                </div>
+                <div class="portfolio-modal-info">
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                    <div class="portfolio-modal-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Professional Quality</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Premium Materials</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Attention to Detail</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Get Quote for Similar Project</a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add modal styles
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+        .portfolio-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .portfolio-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .portfolio-modal-content {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+        }
+        
+        .portfolio-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .portfolio-modal-close:hover {
+            color: #333;
+        }
+        
+        .portfolio-modal-image {
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .portfolio-modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .portfolio-modal-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .portfolio-modal-info p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .portfolio-modal-features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .portfolio-modal-features .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0e2c34;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .portfolio-modal-features {
+                flex-direction: column;
+            }
+        }
+    `;
+    
+    document.head.appendChild(modalStyle);
+    document.body.appendChild(modal);
+    
+    // Close modal functionality
+    const closeBtn = modal.querySelector('.portfolio-modal-close');
+    const overlay = modal.querySelector('.portfolio-modal-overlay');
+    
+    closeBtn.addEventListener('click', () => modal.remove());
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            modal.remove();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            modal.remove();
+        }
+    });
+}
+
+// Hero Quote Form functionality
+function initHeroQuoteForm() {
+    const quoteForm = document.querySelector('.quote-form');
+    if (!quoteForm) return;
+
+    quoteForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const name = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const phone = this.querySelector('input[type="tel"]').value;
+        const service = this.querySelector('select').value;
+        const message = this.querySelector('textarea').value;
+        
+        // Basic validation
+        if (!name || !email || !service) {
+            showNotification('Please fill in all required fields.', 'error');
+            return;
+        }
+        
+        if (!isValidEmail(email)) {
+            showNotification('Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        // Simulate form submission
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+            showNotification('Thank you! Your quote request has been sent. We\'ll get back to you within 24 hours.', 'success');
+            this.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }, 2000);
+    });
+}
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -364,7 +655,7 @@ formStyle.textContent = `
     .form-group.focused label {
         transform: translateY(-20px);
         font-size: 0.8rem;
-        color: #667eea;
+        color: #0e2c34;
     }
     
     .form-group {
@@ -381,5 +672,104 @@ formStyle.textContent = `
     }
 `;
 document.head.appendChild(formStyle);
+
+// Lightbox functionality
+function showLightbox(images, currentIndex) {
+    // Remove existing lightbox
+    const existingLightbox = document.querySelector('.gallery-lightbox');
+    if (existingLightbox) {
+        existingLightbox.remove();
+    }
+    
+    // Create lightbox
+    const lightbox = document.createElement('div');
+    lightbox.className = 'gallery-lightbox';
+    
+    const lightboxHTML = `
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-container">
+            <img src="${images[currentIndex]}" alt="Project ${currentIndex + 1}" class="lightbox-image">
+            <button class="lightbox-nav lightbox-prev" ${currentIndex === 0 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" ${currentIndex === images.length - 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="lightbox-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="lightbox-counter">
+                ${currentIndex + 1} / ${images.length}
+            </div>
+        </div>
+    `;
+    
+    lightbox.innerHTML = lightboxHTML;
+    document.body.appendChild(lightbox);
+    
+    // Show lightbox
+    setTimeout(() => {
+        lightbox.style.display = 'flex';
+    }, 10);
+    
+    // Navigation functionality
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const overlay = lightbox.querySelector('.lightbox-overlay');
+    const image = lightbox.querySelector('.lightbox-image');
+    const counter = lightbox.querySelector('.lightbox-counter');
+    
+    // Previous image
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateLightbox();
+        }
+    });
+    
+    // Next image
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateLightbox();
+        }
+    });
+    
+    // Close lightbox
+    closeBtn.addEventListener('click', () => lightbox.remove());
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            lightbox.remove();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            lightbox.remove();
+        } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+            currentIndex--;
+            updateLightbox();
+        } else if (e.key === 'ArrowRight' && currentIndex < images.length - 1) {
+            currentIndex++;
+            updateLightbox();
+        }
+    });
+    
+    // Update lightbox content
+    function updateLightbox() {
+        image.src = images[currentIndex];
+        counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === images.length - 1;
+        
+        // Update button opacity
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex === images.length - 1 ? '0.5' : '1';
+    }
+}
 
 console.log('Claudio\'s Painting website loaded successfully!'); 

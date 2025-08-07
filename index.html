@@ -14,8 +14,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <i class="fas fa-paint-roller"></i>
-                <span>Claudio's Painting</span>
+                <img src="assets/logo.png" alt="Claudio's Painting Logo">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -37,6 +36,10 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/heroSection.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Transform Your Space with Professional Painting</h1>
@@ -60,10 +63,36 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-placeholder">
-                    <i class="fas fa-paint-brush"></i>
-                    <p>Professional Painting Services</p>
+            <div class="hero-quote-form">
+                <div class="quote-form-container">
+                    <h3>Get Your Free Quote</h3>
+                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                    <form class="quote-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Select Service</option>
+                                <option value="residential">Residential Painting</option>
+                                <option value="commercial">Commercial Painting</option>
+                                <option value="interior">Interior Painting</option>
+                                <option value="exterior">Exterior Painting</option>
+                                <option value="cabinets">Cabinet Refinishing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large">Get Free Quote</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -85,14 +114,7 @@
                     <p>Interior and exterior painting for homes, apartments, and condominiums. We handle everything from single rooms to complete home makeovers.</p>
                     <a href="#contact" class="btn btn-outline">Get Quote</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Commercial Painting</h3>
-                    <p>Professional painting services for offices, retail spaces, warehouses, and other commercial properties. Minimal disruption to your business.</p>
-                    <a href="#contact" class="btn btn-outline">Get Quote</a>
-                </div>
+                
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-paint-roller"></i>
@@ -115,6 +137,14 @@
                     </div>
                     <h3>Cabinet Refinishing</h3>
                     <p>Give your kitchen and bathroom cabinets a fresh new look with our professional refinishing and painting services.</p>
+                    <a href="#contact" class="btn btn-outline">Get Quote</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Commercial Painting</h3>
+                    <p>Professional painting services for offices, retail spaces, warehouses, and other commercial properties. Minimal disruption to your business.</p>
                     <a href="#contact" class="btn btn-outline">Get Quote</a>
                 </div>
                 <div class="service-card">
@@ -198,74 +228,87 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-home"></i>
-                            <p>Modern Living Room</p>
+                        <img src="assets/portfolio/project1/cover.jpeg" alt="Exterior Painting">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <i class="fas fa-eye"></i>
+                                <span class="view-project-link">View Project</span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Contemporary Living Room</h3>
-                        <p>Complete interior transformation with modern color palette</p>
+                        <h3>Exterior Painting</h3>
+                        <p>Comprehensive portfolio featuring our best work across all project types and styles</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-building"></i>
-                            <p>Office Space</p>
+                        <img src="assets/portfolio/project3/WhatsApp Image 2025-08-04 at 12.31.31.jpeg" alt="Interior Painting">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <i class="fas fa-eye"></i>
+                                <span class="view-project-link">View Project</span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Professional Office Space</h3>
-                        <p>Commercial painting project with minimal business disruption</p>
+                        <h3>Interior Painting Collection</h3>
+                        <p>Professional interior painting projects showcasing quality finishes and attention to detail</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-paint-brush"></i>
-                            <p>Kitchen Cabinets</p>
+                        <img src="assets/portfolio/project4/WhatsApp Image 2025-08-04 at 12.30.37.jpeg" alt="Ceiling Work">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <i class="fas fa-eye"></i>
+                                <span class="view-project-link">View Project</span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Kitchen Cabinet Refinishing</h3>
-                        <p>Complete cabinet transformation with premium finishes</p>
+                        <h3>Ceiling Work</h3>
+                        <p>Expert ceiling painting and refinishing with attention to detail, proper surface preparation, and premium finishes for lasting results</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-external-link-alt"></i>
-                            <p>House Exterior</p>
+                        <img src="assets/portfolio/project5/WhatsApp Image 2025-08-04 at 12.35.36.jpeg" alt="Specialty Finishes">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <i class="fas fa-eye"></i>
+                                <span class="view-project-link">View Project</span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Exterior House Painting</h3>
-                        <p>Weather-resistant exterior painting with proper preparation</p>
+                        <h3>Specialty Finishes</h3>
+                        <p>Custom finishes and specialty painting techniques for unique project requirements</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-bed"></i>
-                            <p>Master Bedroom</p>
+                        <img src="assets/portfolio/project6/WhatsApp Image 2025-08-04 at 17.38.06.jpeg" alt="Residential Transformations">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <i class="fas fa-eye"></i>
+                                <span class="view-project-link">View Project</span>
+                            </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Master Bedroom Suite</h3>
-                        <p>Luxurious bedroom painting with accent walls</p>
+                        <h3>Residential Transformation</h3>
+                        <p>Complete home transformation with modern color palettes and premium finishes</p>
                     </div>
                 </div>
+                
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-bath"></i>
-                            <p>Bathroom</p>
-                        </div>
+                        <img src="assets/portfolio/project2/WhatsApp Image 2025-08-04 at 12.26.24 (1).jpeg" alt="Residential Transformations">
                     </div>
                     <div class="portfolio-content">
-                        <h3>Bathroom Remodel</h3>
-                        <p>Moisture-resistant bathroom painting and refinishing</p>
+                        <h3>Residential Transformation</h3>
+                        <p>Complete home transformation with modern color palettes and premium finishes</p>
                     </div>
                 </div>
             </div>
@@ -287,7 +330,7 @@
                     <p>We pride ourselves on delivering exceptional quality work, using premium materials, and providing outstanding customer service. Our team of skilled professionals is committed to making your vision a reality.</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <h3>500+</h3>
+                            <h3>200+</h3>
                             <p>Projects Completed</p>
                         </div>
                         <div class="stat">
@@ -299,13 +342,12 @@
                             <p>Satisfaction Rate</p>
                         </div>
                     </div>
-                    <a href="#contact" class="btn btn-primary">Work With Us</a>
                 </div>
                 <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Claudio - Master Painter</p>
-                    </div>
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/claudioVideo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
@@ -382,7 +424,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get Your Free Estimate</h2>
-                <p>Ready to start your painting project? Contact us today!</p>
+                <p>Ready to start your project? Contact us today!</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -391,7 +433,7 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
+                            <p>(720) 404-6301</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -405,7 +447,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Service Area</h4>
-                            <p>Serving the greater metropolitan area</p>
+                            <p>Serving Denver Metro Area</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -431,17 +473,16 @@
                             <select id="service" name="service" required>
                                 <option value="">Select Service</option>
                                 <option value="residential">Residential Painting</option>
-                                <option value="commercial">Commercial Painting</option>
                                 <option value="interior">Interior Painting</option>
                                 <option value="exterior">Exterior Painting</option>
                                 <option value="cabinets">Cabinet Refinishing</option>
-                                <option value="other">Other</option>
+                                <option value="other">Others</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="Tell us about your project" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-large">Get Free Estimate</button>
+                        <button type="submit" class="btn btn-primary btn-large">Give us a call</button>
                     </form>
                 </div>
             </div>
@@ -454,25 +495,22 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <i class="fas fa-paint-roller"></i>
-                        <span>Claudio's Painting</span>
+                        <img src="assets/logoWhite.png" alt="Claudio's Painting Logo">
                     </div>
                     <p>Professional painting services with quality craftsmanship and exceptional customer service.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-yelp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
                         <li><a href="#services">Residential Painting</a></li>
-                        <li><a href="#services">Commercial Painting</a></li>
                         <li><a href="#services">Interior Painting</a></li>
                         <li><a href="#services">Exterior Painting</a></li>
                         <li><a href="#services">Cabinet Refinishing</a></li>
+                        <li><a href="#services">Commercial Painting</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -488,14 +526,14 @@
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-phone"></i> (720) 404-6301</p>
                         <p><i class="fas fa-envelope"></i> info@claudiospainting.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Serving Metro Area</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Serving Denver Metro Area</p>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Claudio's Painting. All rights reserved. | Licensed & Insured</p>
+                <p>&copy; 2025 Claudio's Painting. All rights reserved. | Licensed & Insured</p>
             </div>
         </div>
     </footer>
