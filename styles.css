@@ -1434,3 +1434,74 @@ html body .btn-primary:hover {
     color: white !important;
     background: linear-gradient(135deg, #0e2c34 0%, #1a4a5a 100%) !important;
 } 
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    /* Add margin between hero text and navbar on mobile */
+    .hero-content {
+        margin-top: 80px !important;
+        padding-top: 20px !important;
+    }
+    
+    /* Hero section mobile spacing */
+    .hero {
+        padding-top: 80px !important;
+    }
+    
+    .hero h1 {
+        margin-top: 20px !important;
+    }
+    
+    /* Mobile menu when ACTIVE - original white background with closer links */
+    .nav-menu.active {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        gap: 10px !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: white !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        z-index: 1000 !important;
+    }
+    
+    .nav-menu.active li {
+        margin: 5px 0 !important;
+        padding: 5px 0 !important;
+    }
+    
+    .nav-menu.active a {
+        padding: 10px 0 !important;
+        margin: 5px 0 !important;
+        display: block !important;
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+        color: #2c3e50 !important;
+    }
+    
+    /* Ensure About link is fully visible */
+    .nav-menu.active li:nth-child(4) a {
+        margin-bottom: 15px !important;
+    }
+    
+    /* Force mobile menu to have proper spacing when active */
+    header .nav-menu.active,
+    nav .nav-menu.active,
+    .navbar .nav-menu.active {
+        padding: 20px !important;
+        margin: 0 !important;
+    }
+    
+    header .nav-menu.active a,
+    nav .nav-menu.active a,
+    .navbar .nav-menu.active a {
+        padding: 10px 0 !important;
+        margin: 5px 0 !important;
+        font-size: 1.1rem !important;
+        color: #2c3e50 !important;
+    }
+} 
